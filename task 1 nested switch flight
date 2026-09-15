@@ -1,0 +1,56 @@
+#include <stdio.h>
+int main (){
+	int passcategory, age, desttype, valid, rem;
+	float baggwt;
+	printf("Enter number for your passenger category: (1.Adult\t2.Student\t3.Senior Citizen): ");
+	scanf("%d",&passcategory);
+	printf("Please enter age: ");
+	scanf("%d",&age);
+	printf("Enter number corresponding to your destination type (1.Domestic\t2.International): ");
+	scanf("%d",&desttype);
+	printf("Enter baggagge weight: ");
+	scanf("%f",&baggwt);
+	printf("Are your documents valid? 1=Yes and 0=No");
+	scanf("%d",&valid);
+	
+	switch(passcategory){
+	case 1 : printf("\tADULT\n");
+		   switch(desttype){
+			case 1 : printf("Travel type: DOMESTIC");
+			         if (baggwt<=20 && baggwt>=0 && valid==1){
+			         	printf("Baggage within limits and valid documents--> Normal Boarding");}
+						 else if (baggwt>20 && valid==1){
+						 	printf("Baggage is too heavy but valid documents--> Enhanced Baggage screening Required");
+						 } else if ()
+				break;
+			case 2 : printf("Travel type: INTERNATIONAL")
+				break;
+			}
+						 
+						 					 }
+	case 2 : printf("\tSTUDENT\n");				 					 
+		   switch(desttype){
+			case 1 : printf("Travel type : DOMESTIC");
+			}
+	case 3 : printf("\tSENIOR CITIZEN\n");
+	       switch(desttype){
+	       	case 1: printf("Travel type: DOMESTIC");
+		   }
+		
+	printf("\n\tVerification code\n 0->A\n 1->B\n 2->C\n 3->D\n 4->E");
+	rem = age%5;
+	if (rem==0){ printf("Category->A");          //put in final output i don think idhar chahiye
+	} else if (rem==1){printf("Category->B");
+	} else if (rem==2){printf("Category->C");
+	} else if (rem==3){printf("Category->D");
+	}else if (rem==4){printf("Category->E");
+	}else {printf("Invalid code!");}
+	
+	if (passcategory==3){printf("Priority assistance: Eligible");
+	} else if (passcategory==2 && desttype==2){printf("Priority assisstance: Eligible");
+	}
+	
+	
+	
+	return 0;
+	}
