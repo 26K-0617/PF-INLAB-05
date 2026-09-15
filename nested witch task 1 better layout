@@ -1,0 +1,89 @@
+#include <stdio.h>
+int main (){
+	int passcategory, age, desttype, docstatus, rem, baggstatus=-1;//so garbage value doesnot cause problems
+	float baggwt,allowed_wt;
+	printf("Enter number for your passenger category: (1.Adult\t2.Student\t3.Senior Citizen): ");
+	scanf("%d",&passcategory);
+	printf("Please enter age: ");
+	scanf("%d",&age);
+	printf("Enter number corresponding to your destination type (1.Domestic\t2.International): ");
+	scanf("%d",&desttype);
+	printf("Enter baggagge weight: ");
+	scanf("%f",&baggwt);
+	printf("Are your documents valid? 1=Yes and 0=No: ");
+	scanf("%d",&docstatus);
+	
+	switch(passcategory){
+	case 1 ://adult no need to print now bas outout par print adult and travel type acc to conditions
+		   switch(desttype){
+			case 1 : allowed_wt = 20; 
+			break;
+			case 2 : allowed_wt=30;
+			break;
+			default: printf("Error! Invalid destination type chosen");
+			}
+	break;					 
+	case 2 ://student				 					 
+		   switch(desttype){
+			case 1 :allowed_wt=25;
+			break;
+			case 2 :allowed_wt=35;
+			break;
+			default: printf("Error! Invalid destination type chosen");}
+	break;		
+	case 3 : //senior citizen
+	       switch(desttype){
+			case 1 : allowed_wt=30;
+			break;
+			case 2 :allowed_wt=40;
+			break;
+			default :printf("Error! Invalid destination type chosen");}
+   break;
+   default: printf("Error! Invalid passenger category chosen");
+   break;} //default for outer switch aur uska apna break
+   
+   if(allowed_wt>0){ //now checking balance and giving status approval
+   	  if(baggwt<0){ printf("CANT ENTER NEGATIVE NUMBER");
+		 } else if(baggwt<= allowed_wt){ baggstatus = 1;
+		 } else { baggstatus =0;
+		 }
+   }
+	
+	//saray outputs
+	printf("\n\nPassenger type:   ");
+	if(passcategory==1){printf("Adult\n");}
+	else if (passcategory ==2){printf("Student\n");
+	}else if(passcategory==3) printf("Senior Citizen\n");
+	else{printf("Invalid choice\n");
+	}	
+	
+	printf("\nDestination type:   ");
+	if(desttype==1){printf("Domestic\n");}
+	else if (desttype ==2){printf("International\n");
+	}
+	else{printf("Invalid choice\n");
+	}	
+	
+	printf("Allowed baggage weight:    %f\n",allowed_wt); //had to show allowed weight too
+	printf("Actual weight:    %f\n", baggwt);
+	
+ printf("Document Status:          %s\n", (docstatus == 1) ? "Valid" : "Invalid"); //new learnt today	
+	
+	printf("\n\tVerification code\n 0->A\n 1->B\n 2->C\n 3->D\n 4->E\n");
+	rem = age%5; 	
+	if (rem==0){ printf("Category->A\n");          
+	} else if (rem==1){printf("Category->B\n");
+	} else if (rem==2){printf("Category->C\n");
+	} else if (rem==3){printf("Category->D\n");
+	}else if (rem==4){printf("Category->E\n");
+	}else {printf("Invalid code!\n");}
+	
+	
+	if(docstatus==1 && baggstatus==1){printf("Final boarding status-> Normal\n");
+	} else if (docstatus==1 && baggstatus==0){ printf("Final boarding status-> Enhanced baggage screening required\n");
+	} else printf("Final bording status-> DENIED\nPlease verify documents");
+	if (passcategory==3){printf("Priority assistance: Eligible\n");
+	} else if (passcategory==2 && desttype==2){printf("Priority assistance: Eligible\n");
+	}
+	return 0;
+	}
